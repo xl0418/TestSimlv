@@ -189,7 +189,7 @@ Sim_rc <- function(tt, mu1, mu2,
       mu2_g <- growth_rate(mu2, temp, temp_opt2, sigma)
       dN1 <- (mu1_g * temp_R1 - m) * temp_N1 / 100
       dN2 <- (mu2_g * temp_R1 - m) * temp_N2 / 100
-      dR1 <- ((r1in - temp_R1) - v1 * temp_N1* temp_R1  - v2 * temp_N2* temp_R1 ) / 100
+      dR1 <- ((r1in - temp_R1) - v1 * mu1_g * temp_N1* temp_R1  - v2 * mu2_g * temp_N2* temp_R1 ) / 100
 
       temp_N1 <- max(temp_N1 + dN1, 0)
       temp_N2 <- max(temp_N2 + dN2, 0)
@@ -212,8 +212,8 @@ Sim_rc <- function(tt, mu1, mu2,
 
 mu1 <- 1
 mu2 <- 1
-v1 <- 1.3 * mu1
-v2 <- 1.3 * mu2
+v1 <- 1.3
+v2 <- 1.3
 r1in <- 10
 N10 <- 0.1
 N20 <- 0.1
